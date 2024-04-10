@@ -20,6 +20,33 @@ controller.post("/users", async (req, res) => {
   }
 });
 
+controller.get("/users", async (req, res) => {
+  try {
+    const users = await Users.find();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+controller.get("/users/:id", async (req, res) => {
+  try {
+    const users = await Users.findById(req.params.id);
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+controller.delete("/users/:id", async (req, res) => {
+  try {
+    const users = await Users.findByIdAndDelete(req.params.id);
+    res.status(200).json("Id deleted");
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
 // model.save - saving new data to database
 // model.find - get data from database
 // model.findById - get specific data from database
