@@ -47,6 +47,18 @@ controller.delete("/users/:id", async (req, res) => {
   }
 });
 
+controller.put("/users/:id", async (req, res) => {
+  try {
+    const data = req.body;
+    const users = await Users.findByIdAndUpdate(req.params.id, data, {
+      new: true,
+    });
+    res.status(200).json("Data Updated");
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
 // model.save - saving new data to database
 // model.find - get data from database
 // model.findById - get specific data from database
