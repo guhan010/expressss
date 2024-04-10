@@ -4,8 +4,10 @@ import laproute from "./laptop.js";
 import electroute from "./electronics.js";
 import mongoose from "mongoose";
 import { controller } from "./formController.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("Welcome to amazon like page");
 });
