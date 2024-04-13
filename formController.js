@@ -41,7 +41,7 @@ controller.get("/users/:id", async (req, res) => {
 controller.delete("/users/:id", async (req, res) => {
   try {
     const users = await Users.findByIdAndDelete(req.params.id);
-    res.status(200).json("Id deleted");
+    res.status(200).json(users);
   } catch (error) {
     res.status(404).json(error);
   }
